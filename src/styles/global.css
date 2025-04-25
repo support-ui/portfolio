@@ -1,24 +1,37 @@
 @import "tailwindcss";
 
-@keyframes borderGlow {
-    0% {
-      border-color: transparent;
-      box-shadow: 0 0 5px rgba(0, 0, 255, 0.5), 0 0 10px rgba(0, 0, 255, 0.5);
-    }
-    100% {
-      border-color: #1a1a1a;
-      box-shadow: 0 0 15px rgba(0, 0, 255, 1), 0 0 25px rgba(0, 0, 255, 0.5);
-    }
-  }
-  
-  .card-glow:hover {
-    animation: borderGlow 0.8s ease-out forwards;
-  }
-  
+@layer utilities {
+    @keyframes fade-slide-in {
+        0% {
+            opacity: 0;
+            transform: translateX(50px);
+        }
 
-  .progress-ring {
-    transition: stroke-dashoffset 2s ease-in-out;
-  }
-  
-  /* Si deseas que se inicie con el porcentaje deseado, usa JS o directamente ajusta el stroke-dashoffset */
-  
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .animate-fade-slide-in {
+        animation: fade-slide-in 1s ease-out forwards;
+    }
+
+    @keyframes shadow-pulse {
+        0% {
+            box-shadow: 0 0 0 0px rgba(0, 112, 244, 0.4);
+        }
+
+        100% {
+            box-shadow: 0 0 7px 25px rgba(0, 112, 244, 0);
+        }
+    }
+
+    .pulse {
+        font-weight: 700;
+        color: #fff;
+        text-align: center;
+        border-radius: 50px;
+        animation: shadow-pulse 1.5s infinite;
+    }
+}

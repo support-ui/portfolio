@@ -1,0 +1,159 @@
+<div class="container mx-auto">
+    <div class="circle">
+      <div class="icon-container" style="--i: 0;" data-legend="Leyenda 1">
+        <img src="https://images-cdn.openxcell.com/wp-content/uploads/2024/07/24154156/dango-inner-2.webp" alt="Icono 1" class="icon">
+      </div>
+      <div class="icon-container" style="--i: 1;" data-legend="Leyenda 2">
+        <img src="https://cdn0.iconfinder.com/data/icons/logos-brands-in-colors/128/react-512.png" alt="Icono 2" class="icon">
+      </div>
+      <div class="icon-container" style="--i: 2;" data-legend="Leyenda 3">
+        <img src="https://onesolutionsweb.com/wp-content/uploads/2022/02/angular-icon-logo-284x300.png.webp" alt="Icono 3" class="icon">
+      </div>
+      <div class="icon-container" style="--i: 3;" data-legend="Leyenda 4">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png" alt="Icono 4" class="icon">
+      </div>
+      <div class="icon-container" style="--i: 4;" data-legend="Leyenda 5">
+        <img src="https://static-00.iconduck.com/assets.00/php-icon-2048x2048-zjxns1zh.png" alt="Icono 5" class="icon">
+      </div>
+      <div class="icon-container" style="--i: 5;" data-legend="Leyenda 6">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Android_Studio_icon_%282023%29.svg/2048px-Android_Studio_icon_%282023%29.svg.png" alt="Icono 6" class="icon">
+      </div>
+      <div class="icon-container" style="--i: 6;" data-legend="Leyenda 7">
+        <img src="https://skillforge.com/wp-content/uploads/2020/10/javascript-266x300.png" alt="Icono 7" class="icon">
+      </div>
+      <div class="icon-container" style="--i: 7;" data-legend="Leyenda 8">
+        <img src="https://images.icon-icons.com/2429/PNG/512/figma_logo_icon_147289.png" alt="Icono 8" class="icon">
+      </div>
+      <div class="icon-container" style="--i: 8;" data-legend="Leyenda 9">
+        <img src="https://images-cdn.openxcell.com/wp-content/uploads/2024/07/24154156/dango-inner-2.webp" alt="Icono 9" class="icon">
+      </div>
+      <div class="icon-container" style="--i: 9;" data-legend="Leyenda 10">
+        <img src="https://images-cdn.openxcell.com/wp-content/uploads/2024/07/24154156/dango-inner-2.webp" alt="Icono 10" class="icon">
+      </div>
+    </div>
+    <div class="center-content">
+      <img id="center-image" src="" alt="" class="center-image hidden">
+      <p id="center-legend" class="center-legend hidden"></p>
+    </div>
+  </div>
+  
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem;
+      width: 100%;
+      position: relative; /* Añadimos position: relative al contenedor */
+    }
+  
+    .circle {
+    width: 35vw; /* Nuevo ancho del círculo */
+    height: 35vw; /* Nueva altura del círculo */
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate 60s linear infinite; /* Animación de rotación */
+    transition: animation-play-state 0.2s ease-in-out; /* Transición suave para la pausa */
+  }
+  
+  .icon-container {
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(calc(360deg / 10 * var(--i))) translateY(calc(18vw)); /* Ajustamos translateY */
+    transition: transform 0.3s ease-in-out, animation-play-state 0.2s ease-in-out; /* Transición para el zoom y la pausa */
+  }
+  
+    .icon-container:hover {
+      transform: translate(-50%, -50%) rotate(calc(360deg / 10 * var(--i))) translateY(calc(18vw)) scale(1.2); /* Zoom al hacer hover */
+    }
+  
+    .icon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease-in-out; /* Transición suave para el zoom de la imagen */
+    }
+  
+    .icon-container:hover .icon {
+      transform: scale(1.2); /* Zoom de la imagen al hacer hover en el contenedor */
+    }
+  
+    .center-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10; /* Asegura que esté por encima del círculo */
+    }
+  
+    .center-image {
+      max-width: 50%;
+      max-height: 50%;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+      transition: opacity 0.2s ease-in-out;
+    }
+  
+    .center-legend {
+      font-size: 0.8rem;
+      color: white;
+      opacity: 0.8;
+      transition: opacity 0.2s ease-in-out;
+    }
+  
+    .hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+  
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  
+  <script>
+    const circle = document.querySelector('.circle');
+    const iconContainers = document.querySelectorAll('.icon-container');
+    const centerImage = document.getElementById('center-image');
+    const centerLegend = document.getElementById('center-legend');
+  
+    iconContainers.forEach(iconContainer => {
+      const icon = iconContainer.querySelector('.icon');
+      const legend = iconContainer.dataset.legend;
+  
+      iconContainer.addEventListener('mouseenter', () => {
+        circle.style.animationPlayState = 'paused';
+        centerImage.src = icon.src;
+        centerImage.alt = icon.alt;
+        centerLegend.textContent = legend;
+        centerImage.classList.remove('hidden');
+        centerLegend.classList.remove('hidden');
+      });
+  
+      iconContainer.addEventListener('mouseleave', () => {
+        circle.style.animationPlayState = 'running';
+        centerImage.classList.add('hidden');
+        centerLegend.classList.add('hidden');
+        centerImage.src = '';
+        centerImage.alt = '';
+        centerLegend.textContent = '';
+      });
+    });
+  </script>
