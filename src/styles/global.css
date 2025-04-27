@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* src/styles/global.css */
+/* src/styles/global.css */
+body {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  
 @layer utilities {
     @keyframes fade-slide-in {
         0% {
